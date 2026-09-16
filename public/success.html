@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order status — The Cozy Corner</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="status-page">
+  <div class="status-card">
+    <div class="status-icon pending" id="statusIcon">…</div>
+    <h2 id="statusTitle">Checking your payment…</h2>
+    <p id="statusMsg" style="color:var(--ink-soft); margin-top:8px;">Hang tight, this takes a few seconds.</p>
+    <div class="status-actions" id="actions">
+      <a class="btn btn-primary" id="downloadBtn" href="#" style="justify-content:center;">Download now</a>
+      <a class="btn btn-ghost" href="/" style="justify-content:center;">Back to store</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  var params = new URLSearchParams(location.search);
+  var orderId = params.get('order_id');
+
+  var icon = document.getElementById('statusIcon');
+  var title = document.getElementById('statusTitle');
+  var msg = document.getElementById('statusMsg');
+  var actions = document.getElementById('actions');
+  var downloadBtn = document.getElementById('downloadBtn');
+
+  async function checkStatus(attempt) {
+    if (!orderId) {
+      title.textContent = 'Order not found';
+      msg.textContent = 'There’s no order id in this link.';
+      return;
+    }
+    try {
+      var res = await fetch('/api/order-status?order_id=' + encodeURIComponent(orderId));
+      var data = await res.json();
+
+      if (data.status === 'PAID') {
+        icon.className = 'status-icon paid';
+        icon.textContent = '✓';
+        title.textContent = 'Payment confirmed!';
+        msg.textContent = "We've emailed your file — you can also download it below.";
+        downloadBtn.href = '/api/download?order_id=' + encodeURIComponent(orderId);
+        actions.style.display = 'flex';
+        return;
+      }
+
+      if (['EXPIRED', 'FAILED', 'CANCELLED', 'TERMINATED'].indexOf(data.status) !== -1) {
+        icon.className = 'status-icon failed';
+        icon.textContent = '×';
+        title.textContent = 'Payment not completed';
+        msg.textContent = 'Your payment did not go through — nothing was charged for a failed attempt.';
+        downloadBtn.style.display = 'none';
+        actions.style.display = 'flex';
+        return;
+      }
+
+      if (attempt < 8) {
+        setTimeout(function () { checkStatus(attempt + 1); }, 2500);
+      } else {
+        title.textContent = 'Still confirming…';
+        msg.textContent = "This is taking longer than usual. If you were charged, check your email — we'll deliver it as soon as it confirms.";
+      }
+    } catch (e) {
+      title.textContent = 'Could not check order status';
+      msg.textContent = 'Please refresh this page in a moment.';
+    }
+  }
+
+  checkStatus(0);
+</script>
+</body>
+</html>

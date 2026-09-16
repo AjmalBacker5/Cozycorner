@@ -1,0 +1,14 @@
+Drop your real product files in this folder with these exact names
+(or edit the names in lib/products.js to match your own files):
+
+  dropshipping-module.pdf       <- the module content
+  sellers-contact-list.xlsx     <- the seller contact database
+
+These files are NEVER served publicly. The server only reads them after
+Cashfree confirms a payment is PAID, either to email them to the buyer
+or to stream them from /api/download.
+
+Until you add the real files, the site still works end-to-end (payment,
+webhook, order confirmation) — buyers just won't receive an attachment,
+and a warning is logged on the server so you notice and can resend
+manually.
