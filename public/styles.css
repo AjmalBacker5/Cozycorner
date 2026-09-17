@@ -237,6 +237,19 @@ h1.headline em{ font-style:italic; color:var(--accent); }
   color:var(--accent); text-decoration:none;
 }
 
+/* ---------- benefits (outcomes, not features) ---------- */
+.benefit-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:28px 36px; }
+@media (max-width:700px){ .benefit-grid{ grid-template-columns:1fr; } }
+.benefit-item{ display:flex; gap:16px; align-items:flex-start; }
+.benefit-item .num{
+  flex:none; width:40px; height:40px; border-radius:11px;
+  background:color-mix(in srgb, var(--accent) 16%, transparent); color:var(--accent);
+  font-family:'IBM Plex Mono', monospace; font-weight:700; font-size:0.95rem;
+  display:flex; align-items:center; justify-content:center;
+}
+.benefit-item h4{ font-family:'Fraunces', serif; font-size:1.08rem; margin-bottom:6px; }
+.benefit-item p{ margin:0; color:var(--ink-soft); font-size:0.95rem; }
+
 /* ---------- curriculum / what's inside ---------- */
 .curriculum-card{
   border:1px solid var(--line); border-radius:18px;
