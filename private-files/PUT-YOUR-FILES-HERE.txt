@@ -1,7 +1,8 @@
 Drop your real product files in this folder with these exact names
 (or edit the names in lib/products.js to match your own files):
 
-  dropshipping-module.pdf       <- the module content
+  dropshipping-module.pdf       <- the Indian Dropshipping Mastery course
+  ai-video-course.zip           <- the AI Video Ads course files
   sellers-contact-list.xlsx     <- the seller contact database
 
 These files are NEVER served publicly. The server only reads them after

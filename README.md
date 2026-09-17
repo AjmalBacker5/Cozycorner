@@ -1,14 +1,22 @@
 # The Cozy Corner — setup & deploy guide
 
-A Node/Express site that sells two digital products (the dropshipping module
-at ₹299 and the sellers contact list at ₹199, plus a ₹449 bundle) with real
-Cashfree checkout, and auto-delivers the purchased file by email + an
-instant download link once payment is confirmed.
+A Node/Express site that sells three digital products — Indian Dropshipping
+Mastery (₹299), the AI Video Ads Course (₹399), and the Verified Sellers &
+Suppliers Database (₹199) — each with its own dedicated page, real Cashfree
+checkout, and auto-delivery of the purchased file by email + an instant
+download link once payment is confirmed.
 
 ## 1. How it fits together
 
 ```
-public/          the storefront (index.html), order-status page (success.html), styles.css
+public/index.html              hub/landing page linking to the 3 plan pages
+public/dropshipping.html       Indian Dropshipping Mastery — ₹299
+public/ai-video-course.html    AI Video Ads Course — ₹399
+public/suppliers-data.html     Verified Sellers & Suppliers Database — ₹199
+public/success.html            order-status / download page after checkout
+public/checkout.js             shared checkout modal + Cashfree SDK logic (used by all 3 plan pages)
+public/main.js                 shared mobile nav + FAQ accordion logic
+public/styles.css              shared styles for every page
 server.js        Express app: serves public/ and the API routes below
 lib/cashfree.js  talks to Cashfree's REST API (create order, fetch order, verify webhook)
 lib/email.js     sends the purchased file by email via Resend
@@ -17,10 +25,11 @@ lib/orderStore.js tiny flat-file record of each order (data/orders.json)
 private-files/   your real product files — never served publicly
 ```
 
-Flow: buyer clicks Buy → fills name/email/phone → Cashfree's hosted checkout
-opens → on success Cashfree redirects the buyer to `/success.html` *and*
-calls your server at `/api/webhook` → the webhook re-checks the payment
-directly with Cashfree, then emails the file and unlocks the download link.
+Flow: buyer opens a plan's page → clicks Buy → fills name/email/phone →
+Cashfree's hosted checkout opens → on success Cashfree redirects the buyer
+to `/success.html` *and* calls your server at `/api/webhook` → the webhook
+re-checks the payment directly with Cashfree, then emails the file and
+unlocks the download link.
 
 ## 2. You don't have to wait for Cashfree's approval to start
 
@@ -38,6 +47,7 @@ edit the names in `lib/products.js` if you'd rather use your own):
 
 ```
 private-files/dropshipping-module.pdf
+private-files/ai-video-course.zip
 private-files/sellers-contact-list.xlsx
 ```
 
@@ -110,15 +120,15 @@ Fly.io, a VPS) works the same way — the app just needs `npm install` +
    live App ID / Secret Key.
 3. In Render's environment variables, update `CASHFREE_APP_ID`,
    `CASHFREE_SECRET_KEY`, and set `CASHFREE_ENV=PRODUCTION`.
-4. In `public/index.html`, change:
+4. In `public/checkout.js` (shared by all 3 plan pages), change:
    ```js
-   var CASHFREE_MODE = "sandbox";
+   var CASHFREE_MODE = 'sandbox';
    ```
    to
    ```js
-   var CASHFREE_MODE = "production";
+   var CASHFREE_MODE = 'production';
    ```
-   and redeploy.
+   and redeploy — one edit updates all three checkout pages.
 5. Add a **live-mode** webhook URL in the Cashfree dashboard (same URL,
    configured under Live Mode this time).
 6. Make one small real purchase yourself to confirm the full flow, then
@@ -126,7 +136,7 @@ Fly.io, a VPS) works the same way — the app just needs `npm install` +
 
 ## 9. Notes & limits
 
-- Bundle purchases are delivered as a zip of both files.
+- Each of the 3 plans is sold and delivered separately — there's no bundle discount.
 - Orders are recorded in `data/orders.json`, a simple local file — fine to
   start with; move to a real database if volume grows, since that file
   isn't guaranteed to survive every hosting provider's redeploys.
