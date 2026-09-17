@@ -66,8 +66,16 @@ app.post("/api/webhook", express.raw({ type: "application/json" }), async (req, 
   }
 });
 
+// Redirect any request for a .html URL to its extensionless form, so
+// /dropshipping.html -> /dropshipping (301, preserving the query string).
+app.get(/^(.+)\.html$/, (req, res) => {
+  const clean = req.params[0] === "/index" ? "/" : req.params[0];
+  const query = req.url.includes("?") ? req.url.slice(req.url.indexOf("?")) : "";
+  res.redirect(301, clean + query);
+});
+
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public"), { extensions: ["html"] }));
 
 app.get("/healthz", (req, res) => res.send("ok"));
 
@@ -94,7 +102,7 @@ app.post("/api/create-order", async (req, res) => {
         customer_phone: phone,
       },
       order_meta: {
-        return_url: `${SITE_URL}/success.html?order_id=${orderId}`,
+        return_url: `${SITE_URL}/success?order_id=${orderId}`,
       },
       order_tags: { product },
     });

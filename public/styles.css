@@ -371,7 +371,7 @@ footer{ padding:28px 0 72px; border-top:1px solid var(--line); }
 .sticky-buy .price-tag{ font-size:1.1rem; }
 @media (max-width:760px){ .sticky-buy{ display:flex; } }
 
-/* ---------- order-status pages (success.html) ---------- */
+/* ---------- order-status pages (/success) ---------- */
 .status-page{ min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
 .status-card{ max-width:460px; width:100%; background:var(--bg-raised); border:1px solid var(--line); border-radius:16px; padding:36px; text-align:center; box-shadow:var(--shadow); }
 .status-icon{ width:56px; height:56px; border-radius:50%; margin:0 auto 20px; display:flex; align-items:center; justify-content:center; font-size:1.6rem; }
