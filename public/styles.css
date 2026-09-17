@@ -71,8 +71,8 @@ h1,h2,h3{
 a{color:inherit;}
 img{max-width:100%;}
 .wrap{ max-width:1120px; margin:0 auto; padding:0 24px; }
-section{ padding:88px 0; }
-@media (max-width:640px){ section{ padding:56px 0; } }
+section{ padding:60px 0; }
+@media (max-width:640px){ section{ padding:40px 0; } }
 
 /* ---------- header ---------- */
 header.site{
@@ -151,7 +151,7 @@ nav.links a[aria-current="page"]{ color:var(--ink); background:color-mix(in srgb
 .btn-block{ width:100%; }
 
 /* ---------- hero (hub + course pages) ---------- */
-.hero{ padding:76px 0 48px; }
+.hero{ padding:48px 0 32px; }
 .eyebrow{
   display:inline-flex; align-items:center; gap:8px;
   font-family:'IBM Plex Mono', monospace; font-size:0.76rem;
@@ -169,10 +169,10 @@ h1.headline{
 }
 h1.headline em{ font-style:italic; color:var(--accent); }
 .sub{
-  max-width:58ch; margin-top:20px;
+  max-width:58ch; margin-top:16px;
   font-size:1.1rem; color:var(--ink-soft);
 }
-.hero-ctas{ display:flex; gap:14px; margin-top:32px; flex-wrap:wrap; align-items:center; }
+.hero-ctas{ display:flex; gap:14px; margin-top:24px; flex-wrap:wrap; align-items:center; }
 .price-pill{
   display:inline-flex; align-items:baseline; gap:6px;
   font-family:'IBM Plex Mono', monospace; font-weight:600;
@@ -182,12 +182,12 @@ h1.headline em{ font-style:italic; color:var(--accent); }
 
 /* trust strip (replaces old waybill/manifest block) */
 .trust-strip{
-  margin-top:52px; border:1px solid var(--line); border-radius:16px;
+  margin-top:32px; border:1px solid var(--line); border-radius:16px;
   background:var(--bg-raised); box-shadow:var(--shadow);
   display:grid; grid-template-columns:repeat(3,1fr);
   overflow:hidden;
 }
-.trust-strip div{ padding:20px 22px; display:flex; align-items:center; gap:12px; border-right:1px solid var(--line); }
+.trust-strip div{ padding:14px 18px; display:flex; align-items:center; gap:12px; border-right:1px solid var(--line); }
 .trust-strip div:last-child{ border-right:none; }
 .trust-strip .ico{ font-size:1.25rem; flex:none; }
 .trust-strip .t{ font-weight:600; font-size:0.92rem; }
@@ -199,22 +199,22 @@ h1.headline em{ font-style:italic; color:var(--accent); }
 }
 
 /* ---------- section headers ---------- */
-.section-head{ max-width:62ch; margin-bottom:44px; }
+.section-head{ max-width:62ch; margin-bottom:30px; }
 .section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
-.section-head .eyebrow{ margin-bottom:14px; }
+.section-head .eyebrow{ margin-bottom:10px; }
 .section-head h2{ font-size:clamp(1.7rem, 3vw, 2.3rem); }
-.section-head p{ color:var(--ink-soft); margin-top:12px; font-size:1.03rem; }
+.section-head p{ color:var(--ink-soft); margin-top:10px; font-size:1.03rem; }
 
 /* ---------- plan cards (hub page) ---------- */
 #plans{ background:var(--bg-raised); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-.plan-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.plan-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
 @media (max-width:920px){ .plan-grid{ grid-template-columns:1fr; } }
 
 .plan-card{
   position:relative;
   border:1px solid var(--line); border-radius:18px;
-  background:var(--bg); padding:30px;
-  display:flex; flex-direction:column; gap:16px;
+  background:var(--bg); padding:24px;
+  display:flex; flex-direction:column; gap:12px;
   box-shadow:var(--shadow); transition:transform .16s ease, box-shadow .16s ease;
 }
 .plan-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-lg); }
@@ -228,7 +228,7 @@ h1.headline em{ font-style:italic; color:var(--accent); }
 .plan-card .tagline{ color:var(--ink-soft); font-size:0.95rem; flex:1; }
 .plan-card .plan-foot{
   display:flex; align-items:center; justify-content:space-between; gap:12px;
-  padding-top:16px; border-top:1px solid var(--line); margin-top:auto;
+  padding-top:12px; border-top:1px solid var(--line); margin-top:auto;
 }
 .price-tag{ font-family:'IBM Plex Mono', monospace; font-size:1.25rem; font-weight:600; }
 .price-tag .strike{ font-size:0.8rem; color:var(--ink-faint); text-decoration:line-through; margin-right:8px; font-weight:400;}
@@ -238,7 +238,7 @@ h1.headline em{ font-style:italic; color:var(--accent); }
 }
 
 /* ---------- benefits (outcomes, not features) ---------- */
-.benefit-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:28px 36px; }
+.benefit-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px 28px; }
 @media (max-width:700px){ .benefit-grid{ grid-template-columns:1fr; } }
 .benefit-item{ display:flex; gap:16px; align-items:flex-start; }
 .benefit-item .num{
@@ -253,9 +253,9 @@ h1.headline em{ font-style:italic; color:var(--accent); }
 /* ---------- curriculum / what's inside ---------- */
 .curriculum-card{
   border:1px solid var(--line); border-radius:18px;
-  background:var(--bg-raised); padding:34px; box-shadow:var(--shadow);
+  background:var(--bg-raised); padding:26px; box-shadow:var(--shadow);
 }
-.contents{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px; }
+.contents{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; }
 .contents li{ display:flex; gap:12px; align-items:flex-start; font-size:0.98rem; color:var(--ink); }
 .contents li::before{
   content:"✓"; flex:none; width:22px; height:22px; border-radius:50%;
@@ -264,15 +264,15 @@ h1.headline em{ font-style:italic; color:var(--accent); }
 }
 
 /* ---------- who it's for ---------- */
-.who-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+.who-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
 @media (max-width:700px){ .who-grid{ grid-template-columns:1fr; } }
-.who-card{ background:var(--bg-raised); border:1px solid var(--line); border-radius:14px; padding:22px; display:flex; gap:14px; align-items:flex-start; box-shadow:var(--shadow); }
+.who-card{ background:var(--bg-raised); border:1px solid var(--line); border-radius:14px; padding:18px; display:flex; gap:14px; align-items:flex-start; box-shadow:var(--shadow); }
 .who-card .ico{ font-size:1.3rem; flex:none; }
 .who-card h4{ font-size:1rem; margin-bottom:4px; font-family:'Fraunces',serif; }
 .who-card p{ margin:0; color:var(--ink-soft); font-size:0.92rem; }
 
 /* ---------- how it works ---------- */
-.steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+.steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
 @media (max-width:900px){ .steps{ grid-template-columns:1fr 1fr; } }
 @media (max-width:520px){ .steps{ grid-template-columns:1fr; } }
 .step{ border-left:2px solid var(--line); padding-left:18px; }
@@ -281,9 +281,9 @@ h1.headline em{ font-style:italic; color:var(--accent); }
 .step p{ margin:0; color:var(--ink-soft); font-size:0.92rem; }
 
 /* ---------- good to know ---------- */
-.know-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.know-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
 @media (max-width:760px){ .know-grid{ grid-template-columns:1fr; } }
-.know-card{ background:var(--bg-raised); border:1px solid var(--line); border-radius:12px; padding:22px; box-shadow:var(--shadow); }
+.know-card{ background:var(--bg-raised); border:1px solid var(--line); border-radius:12px; padding:18px; box-shadow:var(--shadow); }
 .know-card h4{ font-size:1.02rem; margin-bottom:8px; font-family:'Fraunces',serif; }
 .know-card p{ margin:0; color:var(--ink-soft); font-size:0.92rem; }
 
@@ -294,7 +294,7 @@ h1.headline em{ font-style:italic; color:var(--accent); }
 .faq-item button{
   width:100%; text-align:left; background:none; border:none; cursor:pointer;
   color:var(--ink); font-family:'Fraunces', serif; font-size:1.05rem; font-weight:600;
-  padding:20px 0; display:flex; justify-content:space-between; align-items:center; gap:16px;
+  padding:16px 0; display:flex; justify-content:space-between; align-items:center; gap:16px;
 }
 .faq-item .plus{ font-family:'IBM Plex Mono', monospace; color:var(--accent); font-size:1.2rem; flex:none; transition:transform .2s ease; }
 .faq-item[data-open="true"] .plus{ transform:rotate(45deg); }
@@ -309,9 +309,9 @@ h1.headline em{ font-style:italic; color:var(--accent); }
 .trust-item span{ color:var(--ink-soft); font-size:0.88rem; }
 
 /* ---------- footer ---------- */
-footer{ padding:36px 0 96px; border-top:1px solid var(--line); }
+footer{ padding:28px 0 72px; border-top:1px solid var(--line); }
 .foot-links{
-  display:flex; flex-wrap:wrap; gap:8px 22px; margin-bottom:18px;
+  display:flex; flex-wrap:wrap; gap:8px 22px; margin-bottom:14px;
 }
 .foot-links a{ font-size:0.86rem; color:var(--ink-soft); text-decoration:none; }
 .foot-links a:hover{ color:var(--ink); }
@@ -319,15 +319,15 @@ footer{ padding:36px 0 96px; border-top:1px solid var(--line); }
   display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
   font-size:0.85rem; color:var(--ink-faint);
 }
-@media (max-width:640px){ footer{ padding-bottom:110px; } }
+@media (max-width:640px){ footer{ padding-bottom:86px; } }
 
 /* ---------- legal / policy pages ---------- */
-.legal-page{ padding:56px 0 88px; }
-.legal-page .legal-head{ margin-bottom:40px; }
+.legal-page{ padding:40px 0 64px; }
+.legal-page .legal-head{ margin-bottom:28px; }
 .legal-page .legal-head h1{ font-size:clamp(1.8rem,4vw,2.4rem); }
 .legal-page .updated{ color:var(--ink-faint); font-size:0.85rem; margin-top:10px; font-family:'IBM Plex Mono', monospace; }
 .legal-body{ max-width:74ch; }
-.legal-body h2{ font-size:1.25rem; margin-top:38px; margin-bottom:12px; }
+.legal-body h2{ font-size:1.25rem; margin-top:26px; margin-bottom:10px; }
 .legal-body h2:first-child{ margin-top:0; }
 .legal-body p{ color:var(--ink-soft); margin:0 0 14px; font-size:0.98rem; }
 .legal-body ul{ color:var(--ink-soft); font-size:0.98rem; padding-left:22px; margin:0 0 14px; }
