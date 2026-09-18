@@ -188,11 +188,12 @@ h1.headline em{ font-style:italic; color:var(--accent); }
   display:grid; grid-template-columns:repeat(3,1fr);
   overflow:hidden;
 }
-.trust-strip div{ padding:14px 18px; display:flex; align-items:center; gap:12px; border-right:1px solid var(--line); }
+.trust-strip div{ padding:14px 18px; display:flex; align-items:center; gap:12px; border-right:1px solid var(--line); min-width:0; }
 .trust-strip div:last-child{ border-right:none; }
+.trust-strip div > div{ min-width:0; }
 .trust-strip .ico{ font-size:1.25rem; flex:none; }
-.trust-strip .t{ font-weight:600; font-size:0.92rem; }
-.trust-strip .d{ color:var(--ink-soft); font-size:0.8rem; margin-top:1px; }
+.trust-strip .t{ font-weight:600; font-size:0.92rem; overflow-wrap:break-word; }
+.trust-strip .d{ color:var(--ink-soft); font-size:0.8rem; margin-top:1px; overflow-wrap:break-word; }
 @media (max-width:700px){
   .trust-strip{ grid-template-columns:1fr; }
   .trust-strip div{ border-right:none; border-bottom:1px solid var(--line); }
@@ -242,14 +243,15 @@ h1.headline em{ font-style:italic; color:var(--accent); }
 .benefit-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px 28px; }
 @media (max-width:700px){ .benefit-grid{ grid-template-columns:1fr; } }
 .benefit-item{ display:flex; gap:16px; align-items:flex-start; }
+.benefit-item > div{ min-width:0; }
 .benefit-item .num{
   flex:none; width:40px; height:40px; border-radius:11px;
   background:color-mix(in srgb, var(--accent) 16%, transparent); color:var(--accent);
   font-family:'IBM Plex Mono', monospace; font-weight:700; font-size:0.95rem;
   display:flex; align-items:center; justify-content:center;
 }
-.benefit-item h4{ font-family:'Fraunces', serif; font-size:1.08rem; margin-bottom:6px; }
-.benefit-item p{ margin:0; color:var(--ink-soft); font-size:0.95rem; }
+.benefit-item h4{ font-family:'Fraunces', serif; font-size:1.08rem; margin-bottom:6px; overflow-wrap:break-word; }
+.benefit-item p{ margin:0; color:var(--ink-soft); font-size:0.95rem; overflow-wrap:break-word; }
 
 /* ---------- curriculum / what's inside ---------- */
 .curriculum-card{
@@ -269,8 +271,9 @@ h1.headline em{ font-style:italic; color:var(--accent); }
 @media (max-width:700px){ .who-grid{ grid-template-columns:1fr; } }
 .who-card{ background:var(--bg-raised); border:1px solid var(--line); border-radius:14px; padding:18px; display:flex; gap:14px; align-items:flex-start; box-shadow:var(--shadow); }
 .who-card .ico{ font-size:1.3rem; flex:none; }
+.who-card > div{ min-width:0; }
 .who-card h4{ font-size:1rem; margin-bottom:4px; font-family:'Fraunces',serif; }
-.who-card p{ margin:0; color:var(--ink-soft); font-size:0.92rem; }
+.who-card p{ margin:0; color:var(--ink-soft); font-size:0.92rem; overflow-wrap:break-word; }
 
 /* ---------- how it works ---------- */
 .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
