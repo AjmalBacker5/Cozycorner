@@ -130,6 +130,7 @@ nav.links a[aria-current="page"]{ color:var(--ink); background:color-mix(in srgb
   nav.links a{ padding:12px 10px; }
   nav.links[data-open="true"]{ display:flex; }
   .nav-toggle{ display:inline-flex; }
+  .nav-right{ display:none; }
   header.site{ position:sticky; }
 }
 
